@@ -15,17 +15,25 @@ axios
             output: $('#problem_output')
         }
         const list = $(".sampledata");
-        const setList = [];
-        list.each(function (i, elem) {
+        let setList = [];
+        list.each(function (index, elem) {
             const data = $(this).html();
-            const nowListPosition = Math.ceil(setList.length / 2); // 0~1 [1] 2~3[2] 
-            console.log(nowListPosition)
-            const checkedInput = setList.length % 2;
+            const checkedInput = index % 2;
 
-            if (!checkedInput) {
-                setList.push({ "input": data });
+            const combineData = (name, data) => {
+                const toggleNameInputOrOutput = (toggle) => toggle ? { "input": data } : { "output": data };
+                return toggleNameInputOrOutput(name)
+            }
+            const a = combineData(checkedInput, data)
+            console.log(a)
+            if (checkedInput) {
+                setList = [...setList, combineData(checkedInput, data)]
             } else {
-                setList[nowListPosition - 1]["output"] = data;
+                console.log(setList.pop());
+                // setList.push({
+                //     "input": setList.pop().input,
+                //     "output": data
+                // })
             }
         })
         console.log(setList)
