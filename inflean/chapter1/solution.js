@@ -1,11 +1,11 @@
 
-const solution = require("./13")
+const solution = require("./17")
 
 
 const args = [
-   "KoreaTimeGood"
+    [5, ["good", "time", "good", "time", "student"]]
 ]
 
 console.log(
-    args.map(arg => solution(arg))
-)
+        args.map(arg => solution(arg))
+    )
