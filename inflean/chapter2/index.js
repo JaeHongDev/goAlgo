@@ -8,7 +8,6 @@ const a = fs.readdirSync(__dirname)
         console.log(`----------<fileName:${file}>----------$`)
         console.log(`result:${require(`./${file}`)()}`)
         console.log(`----------</fileName:${file}>---------$`)
-
         console.log();
         console.log();
         console.log();
