@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "findData": "node index.js",
-    "solve": "nodemon --exec ./index.js"
+    "solve": "node ./startProblem.js",
+    "create": "node ./createSolve.js"
   },
   "repository": {
     "type": "git",
