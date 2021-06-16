@@ -11,24 +11,26 @@ module.exports = function () {
 }
 
 function solution(p = [], k = 0) {
-  let lt = p[0]
+  let lt = Math.max(...p)
   let rt = p.reduce((arr, cal) => arr + cal, 0)
 
-  while (true) {
+  while (lt<= rt) {
     let mid = parseInt((lt + rt) / 2)
 
     let sum = 0
     let cnt = 0
 
     for (let i = 0; i < p.length; i++) {
-      sum += p[i]
-      console.log(i,sum)
-      if (sum >= mid) {
+      if (sum + p[i] > mid) {
         cnt++
-        sum = 0;
-      } 
+        sum = p[i]
+      } else sum += p[i]
     }
-    console.log(cnt)
+
+    if (cnt <= k) {
+      answer = mid
+      lt = mid - 1
+    } else lt = mid + 1
 
     break
   }
