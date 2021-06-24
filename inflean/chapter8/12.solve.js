@@ -13,7 +13,6 @@ function solution(n, r) {
   let memo = Array.from(Array(n+1), () => Array(n+1).fill(0))
 
   const DFS = (n, r) => {
-    console.log(memo)
     if (memo[n][r] > 0) return memo[n][r]
     if (n === r || r === 0) return 1
     return (memo[n][r] = DFS(n - 1, r - 1) + DFS(n - 1, r))
