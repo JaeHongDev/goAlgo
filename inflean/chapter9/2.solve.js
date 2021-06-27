@@ -19,31 +19,37 @@ module.exports = function () {
   return solution(N, p)
 }
 
-function solution(N, p = []) {
-  const graph = new Array(N + 1).fill(0).map((_) => new Array(N + 1).fill(0))
-  const ch = new Array(N + 1).fill(0)
-  const path = []
-  p.forEach(([a, b]) => (graph[a][b] = 1))
+function solution(N,p=[]) {
+  const graph = new Array(N+1).fill().map(_=> new Array());
 
-  const DFS = (L) => {
-    if (L === N) {
-      console.log(path)
-      return
+  const ch = new Array(N+1).fill(0)
+  const path = [];
+
+  p.forEach(([a,b])=>{
+      graph[a].push(b);
+  })
+
+  console.log(graph)
+  const DFS = V =>{
+    if(V === N) {
+        console.log(path);
+        return;
     }
-    for (let i = 1; i <= N; i++) {
-      if (graph[L][i] === 1 && ch[i] === 0) {
-        ch[i]=1;
-        path.push(i);
-        DFS(i);
-        ch[i]=0;
-        path.pop();
-      }
+    const size = graph[V].length;
+    for(let i = 0; i<size;i++){
+        const target = graph[V][i]
+        if(ch[target] === 0) {
+            ch[target] = 1;
+            path.push(target);
+            DFS(target)
+            ch[target] = 0;
+            path.pop(target);
+        }
+        
     }
   }
-
-
-  path.push(1)
-  ch[1] = 1
+  path.push(1 )
+  ch[1] = 1;
   DFS(1)
 
   return 0
