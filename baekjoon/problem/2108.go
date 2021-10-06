@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"sort"
 	"strconv"
@@ -12,30 +13,43 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	size, _ := strconv.Atoi(scanner.Text())
-	arr := make([]int, size)
+
+	numHash := make(map[int]int)
+	//numHash := map[int]int{-1: 2, -2: 2, -3: 1}
 	for i := 0; i < size; i++ {
 		scanner.Scan()
-		value, _ := strconv.Atoi(scanner.Text())
-		arr[i] = value
-	}
-	sort.Ints(arr)
-	sum := 0
-	for i := range arr {
-		// 산술 평균
-		sum += arr[i]
+		key, _ := strconv.Atoi(scanner.Text())
+		numHash[key]++
 
 	}
-	fmt.Println()
-	fmt.Printf("%d\n", sum/len(arr))
-	fmt.Printf("%d\n", arr[len(arr)/2-1])
-	fmt.Printf("%d\n", arr[1])
-	if arr[0] < 0 {
-		arr[0] = arr[0] * -1
+	mostFrequency := 0
+	numArr := make([]int, 0, len(numHash))
+	for key, value := range numHash {
+		if mostFrequency < value {
+			mostFrequency = value
+		}
+		numArr = append(numArr, key)
 	}
 
-	if arr[len(arr)-1] < 0 {
-		arr[len(arr)-1] = arr[len(arr)-1] * -1
+	sort.Ints(numArr)
+	avg := 0.0
+	fre := 0
+	cnt := 0
+	for _, value := range numArr {
+		if numHash[value] == mostFrequency && cnt < 2 {
+			fre = value
+			cnt++
+		}
+		avg += float64(value)
 	}
-	fmt.Printf("%d", arr[0]+arr[len(arr)-1])
+	fmt.Println(math.Round(avg / float64(len(numArr))))
+	fmt.Println(numArr[len(numArr)/2])
+	fmt.Println(fre)
+
+	if len(numArr) != 1 {
+		fmt.Println(numArr[len(numArr)-1] - numArr[0])
+	} else {
+		fmt.Println(0)
+	}
 
 }
