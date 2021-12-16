@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -24,7 +25,9 @@ func main() {
 		unsortedArr[i] = item
 	}
 
-	sortedArr := QuickSort(unsortedArr)
+	//sortedArr := QuickSort(unsortedArr)
+	sort.Ints(unsortedArr)
+	sortedArr := unsortedArr
 	answer := strings.Trim(strings.Replace(fmt.Sprint(sortedArr), " ", "", -1), "[]")
 	fmt.Println(answer)
 
