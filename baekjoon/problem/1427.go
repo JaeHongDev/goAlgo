@@ -28,6 +28,7 @@ func main() {
 	//sortedArr := QuickSort(unsortedArr)
 	sort.Ints(unsortedArr)
 	sortedArr := unsortedArr
+
 	answer := strings.Trim(strings.Replace(fmt.Sprint(sortedArr), " ", "", -1), "[]")
 	fmt.Println(answer)
 
