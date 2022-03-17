@@ -1,0 +1,16 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "15649.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "solve:start": "nodemon  ./index.js 2580"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

@@ -5,4 +5,5 @@ let input = fs
   .toString()
   .trim()
 
-  console.log(input+"??!");
+  
+  console.log(input+"??!");¡

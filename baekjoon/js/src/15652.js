@@ -27,3 +27,4 @@ function solution(last, size) {
   dfs(1)
 }
 solution(Number(n), Number(m));
+Array().sort
