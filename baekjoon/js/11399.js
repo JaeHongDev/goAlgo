@@ -23,10 +23,7 @@ const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 let input = fs.readFileSync(filePath).toString().split("\n");
 
-const [testCase, waitingTimes] = [
-  Number(input[0]),
-  input[1].split(" ").map(Number),
-];
+const [testCase, waitingTimes] = [Number(input[0]),input[1].split(" ").map(Number)];
 const solution = (waitingTimes = []) =>
   waitingTimes
     .map((item, index) => [item, index])

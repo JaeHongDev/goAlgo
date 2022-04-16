@@ -36,7 +36,6 @@ let sum = 0;
 let temp = 0;
 let check = false;
 for(let i = 0; i <input.length;i++) {
-    console.log(sum,temp);
     if(input[i] === "-"){
        if(check) {
            sum -= temp;
@@ -53,7 +52,6 @@ for(let i = 0; i <input.length;i++) {
     }
     sum+=  Number(input[i]); 
 }
-console.log(sum,temp);
 if(temp !== 0) sum-= temp;
 console.log(sum);
 // 10000000 - 1 + 1 - 90 + 2
