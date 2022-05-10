@@ -18,6 +18,5 @@ function main() {
   console.time("정렬 라이브러리 성능")
   otherArray.sort();
   console.timeEnd("정렬 라이브러리 성능")
-  
 }
 main();
