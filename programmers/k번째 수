@@ -1,0 +1,3 @@
+const solution = (array, commands) => 
+	commands
+		.map(([start, finish, position]) => [...array].splice(start-1, finish - start + 1).sort((a,b) => a - b)[position -1]);
