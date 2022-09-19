@@ -1,10 +1,8 @@
 function solution(n) {
-    var answer = 0;
-    const num = toTernary(n).reverse();0
-    console.log(num)
-    const num1 = num.map((i,index)=> i * Math.pow(10,index));
-    console.log(num1);
-    return answer;
+    return toTernary(n)
+        .reverse()
+        .map((i,index)=> i * Math.pow(3,index))
+        .reduce((pre,cal) => pre+cal,0);
 }
 function toTernary(n){
 	const num = []; 
