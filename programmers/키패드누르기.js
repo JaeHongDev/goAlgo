@@ -1,69 +1,55 @@
+const positionTable = {
+    1: [1,1],
+    2: [1,2],
+    3: [1,3],
+    4: [2,1],
+    5: [2,2],
+    6: [2,3],
+    7: [3,1],
+    8: [3,2],
+    9: [3,3],
+  "*": [4,1],
+    0: [4,2],
+  "#": [4,3]
+}
+function keyMap(key){ 
+    switch (key){
+        case 1:
+        case 4:
+        case 7:
+          return "L"
+        case 2:
+        case 5:
+        case 8: 
+        case 0: 
+          return "C"
+        case 3:
+        case 6:
+        case 9:
+          return "R"
+    }
+}
+
+const calculatePositionXY = (targetA, targetB) =>  Math.sqrt(Math.abs(targetA[0] - targetB[0]) + Math.abs(targetA[1] - targetB[1]));
+
+
 function solution(numbers, hand) {
     var answer = '';
-    const keyMap = {
-        1:"L",
-        4:"L", 
-        7:"L",
-        2:"C",
-        5:"C",
-        8:"C",
-        0:"C",
-        3:"R",
-        6:"R",
-        9:"R"
-    }
-    const lineMapping = {
-        1: 1,
-        2: 1,
-        3: 1,
-        4: 2,
-        5: 2,
-        6: 2,
-        7: 3,
-        8: 3,
-        9: 3,
-        0: 4
-    }
-    let recordLeftLine = 4;
-    let recordRightLine = 4;
-    let index = -1;
-    for(let num of numbers ){
-        index ++; 
-        console.log(index,recordLeftLine, recordRightLine);
-        const result = keyMap[num];
-       	if(index === 8){
-            console.log(result);
-        }
-        if(result === "L") {
-            recordLeftLine = lineMapping[num];
-            answer += "L"; 
-        }
-        if(result === "R") {
-            recordRightLine = lineMapping[num];
-            answer += "R";
-        }
-        if(result === "C"){
-			const a= Math.abs(recordLeftLine  - lineMapping[num]);
-            const b= Math.abs(recordRightLine - lineMapping[num]);
-            if(index === 8 ){
-                console.log(recordLeftLine, recordRightLine);
-            }
-            if(a > b) {
-                answer+= "R";
-                recordRightLine = lineMapping[num];
-            }
-            if(a < b) { 
-                answer+= "L";
-                recordLeftLine = lineMapping[num];
-            }
-            console.log("-",a,b,"-") 
-            if(a === b ) {
-              const pos = hand[0].toUpperCase(); 
-              answer += pos;
-              if(pos === "L") recordLeftLine = lineMapping[num];
-              if(pos === "R") recordRightLine = lineMapping[num];
-            } 
-        }
-    }
-    return answer;
+	const myHand = hand[0].toUpperCase();
+    return numbers.reduce((pre,cal) => {
+        const findKey = keyMap(cal);
+        if(findKey === "L") return {...pre, left:cal, result: pre.result.concat(findKey)}
+        if(findKey === "R") return {...pre, right:cal, result: pre.result.concat(findKey)}
+        
+       	const leftPositionDistence = calculatePositionXY(positionTable[pre.left], positionTable[cal])
+        const rightPositionDistence = calculatePositionXY(positionTable[pre.right], positionTable[cal])
+        
+        if(leftPositionDistence < rightPositionDistence) return {...pre, left:cal, result:pre.result.concat("L")}
+        if(leftPositionDistence > rightPositionDistence) return {...pre, right:cal, result:pre.result.concat("R")}
+        
+        if(myHand === "L") return {...pre, left:cal, result:pre.result.concat("L")}
+        if(myHand === "R") return {...pre, right:cal, result:pre.result.concat("R")}
+       	
+    }, {left:'*', right:'#', result:""}).result;
 }
+
