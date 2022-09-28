@@ -1,9 +1,20 @@
 function solution(people, limit) {
-    return people.sort((a,b) => a - b).reduce((pre,cal) => {
-        if(pre.now + cal < limit) return { ...pre, now:pre.now+cal, p:pre.p +1}
-        if(pre.now + cal === limit) return {now:0, p:1, count:pre.count+ pre.p}
-        return {now:0, p:1, count: pre.count + pre.p}
-    }, {now:0, count:0, p:1}).count;
-
+    people.sort((a,b) => a-b);
+    if(people[0] + people[1] > limit) return people.length;
+    let answer = 0;
+    let sum = people.shift();
+   
+    while(people.length){
+        const item = people.pop();
+        sum += item;
+        if(sum > limit){
+            answer += 1;
+            sum -= item;
+            continue;
+        }
+        answer += 1;
+        sum = people.shift();
+    }
+    if(sum < limit) return answer + 1;
+    return answer;
 }
-
