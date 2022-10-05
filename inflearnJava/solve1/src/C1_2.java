@@ -4,6 +4,21 @@ public class C1_2 {
         System.out.println(solution.solution("StuDY"));
     }
 
+    // 해결 방법1
+    class Solve1{
+        public String solve1(String str){
+            StringBuilder answer = new StringBuilder();
+            for(char x : str.toCharArray()){
+              if(Character.isLowerCase(x)) {
+                  answer.append(Character.toUpperCase(x));
+                  continue;
+              }
+                answer.append(Character.toLowerCase(x));
+            }
+            return answer.toString();
+        }
+    }
+
 }
 
 class Solution1{
