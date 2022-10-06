@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/goAlgo.iml" filepath="$PROJECT_DIR$/goAlgo.iml" />
       <module fileurl="file://$PROJECT_DIR$/inflearnJava/inflearnJava.iml" filepath="$PROJECT_DIR$/inflearnJava/inflearnJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inflearnJava/solve2.iml" filepath="$PROJECT_DIR$/inflearnJava/solve2.iml" />
     </modules>
   </component>
 </project>
