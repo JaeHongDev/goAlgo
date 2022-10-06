@@ -5,7 +5,7 @@ public class C1_8 {
         C1_8 T = new C1_8();
         Scanner s = new Scanner(System.in);
 
-        System.out.println(T.solution(s.next()));
+        System.out.println(T.solution(s.nextLine()));
     }
 
     public String solution(String str){
@@ -13,3 +13,6 @@ public class C1_8 {
         return new StringBuilder(str).reverse().toString().equals(str) ? "YES" : "NO";
     }
 }
+
+//found7, time: study; Yduts; emit, 7Dnuof
+//found7, time: study; Yduts; emit, 7Dnuof
