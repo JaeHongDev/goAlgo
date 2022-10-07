@@ -27,4 +27,15 @@ public class C2_1 {
         }
         return answer;
     }
+
+    public ArrayList<Integer> otherSolution(int[]arr, int size){
+        ArrayList<Integer> answer = new ArrayList<>();
+        answer.add(arr[0]);
+        for(int i = 1 ; i <size;i++){
+            if(arr[i] > arr[i-1]) {
+                answer.add(arr[i]);
+            }
+        }
+        return answer;
+    }
 }
