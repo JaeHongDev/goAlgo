@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class C3_2 {
@@ -26,15 +23,27 @@ public class C3_2 {
     }
 
     public ArrayList<Integer> solution(int[] arr1, int[] arr2) {
-        Set<Integer>       set    = new HashSet<>();
         ArrayList<Integer> answer = new ArrayList<>();
-        for (int i : arr1) {
-            set.add(i);
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        int m  = arr1.length;
+        int n  = arr2.length;
+        int p1 = 0, p2 = 0;
+        while (p1 < m && p2 < n) {
+            if (arr1[p1] == arr2[p2]) {
+                answer.add(arr1[p1]);
+                p1++;
+                p2++;
+                continue;
+            }
+            if (arr1[p1] < arr2[p2]) {
+                p1++;
+            } else {
+                p2++;
+            }
         }
-        for (int i : arr2) {
-            if (set.contains(i)) answer.add(i);
-        }
-        answer.sort((a, b) -> a - b);
         return answer;
+
     }
 }

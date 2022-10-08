@@ -14,17 +14,14 @@ public class C3_3 {
     }
 
     private int solution(int[] arr, int size, int k) {
-        int ll     = 0;
-        int rl     = k - 1;
         int answer = 0;
         int sum    = 0;
-        for (int i = ll; i <= rl; i++) sum += arr[i];
-        while (rl != arr.length) {
+        for (int i = 0; i < k; i++) sum += arr[i];
+        answer = sum;
+        for (int i = k; i < size; i++) {
+            sum += (arr[i] - arr[i - k]);
             answer = Math.max(answer, sum);
-            sum -= arr[ll++];
-            sum += arr[rl++];
         }
-        answer = Math.max(answer,sum);
         return answer;
     }
 }
