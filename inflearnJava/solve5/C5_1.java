@@ -18,13 +18,13 @@ public class C5_1 {
                 stack.push(c);
             }
             if (c == ')') {
-                if (stack.size() ==0 || stack.lastElement() != '(') {
+                if (stack.isEmpty() || stack.lastElement() != '(') {
                     return "NO";
                 }
                 stack.pop();
             }
         }
-        if (stack.size() == 0) return "YES";
+        if (stack.isEmpty()) return "YES";
         return "NO";
     }
 }
