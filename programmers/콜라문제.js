@@ -1,9 +1,11 @@
 function solution(a, b, n) {
     var answer = 0;
-    
-    while(n >= 2){
-        n = parseInt(n / a) * b;
-        answer += n;
+    let emptyBottle = 0;
+    let bottle = n;
+    while (bottle >= a ) {
+		emptyBottle = parseInt(bottle / a ) * b; 
+	    bottle = emptyBottle + (bottle % a);
+        answer += emptyBottle;
     }
-    return answer +1;
+ 	return answer;   
 }
