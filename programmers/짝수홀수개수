@@ -1,0 +1,7 @@
+function solution(num_list) {
+	return num_list.reduce((pre,cal) => {
+       if(cal % 2 == 0 ) pre[0] +=1;
+       if(cal % 2 != 0 ) pre[1] +=1;
+        return pre;
+    },[0,0])
+}
