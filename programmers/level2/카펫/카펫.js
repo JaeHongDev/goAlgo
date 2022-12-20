@@ -10,9 +10,16 @@ function solution(brown, yellow) {
 
     const yellowSquareSizes = [];
 
-    for(let i = 0; i <= yellow / 2 && yellow -i >=0 ; i++){
-        const temp = [];
-        console.log([i, yellow -i]);
+    for(let i = yellow; i> 0; i--){
+        console.log(i);
+        let index = 0;
+        const dfs = (level) =>{
+            if(level === i){
+                return ;
+            }
+            dfs(level+1);
+            dfs(level -1);
+        }
     }
     return answer;
 }
@@ -25,11 +32,71 @@ function test(runner,expected){
     console.log("");
 }
 
+/*
 test(()=>solution(10,	2),	[4, 3])
 test(()=>solution(8,	1),	[3, 3])
 test(()=>solution(24,	24),	[8, 6])
 test(()=>solution(24,	23),	[8, 6])
+*/
+fullSearchTest(9);
 
+/**
+ *
+ * @param {number}num
+ */
+function fullSearchTest(num){
+
+    /**
+     *
+     * @param {number} level
+     */
+    const cache = new Array(num+1).fill(0);
+
+    const dfs = ( level) =>{
+        if(level === num+1){
+            return ;
+        }
+        if(num - level < level){
+            return ;
+        }
+        console.log(">>>")
+
+        console.log(level);
+        console.log(num - level);
+        dfs(level + 1);
+    }
+
+    dfs(0);
+
+    /**
+     * 3
+     *
+     * 2 1
+     * 1 2
+     * 3 0
+     * 0 3
+     *
+     * 4
+     * 4
+     * 3 1
+     * 2 2
+     *
+     * 5
+     * 5 0
+     * 4 1
+     * 3 2
+     * 3 1 1
+     *
+     * 6
+     * 6 0
+     * 5 1
+     * 4 2
+     * 4 1 1
+     * 3 3
+     * 3 2 1
+     *
+     */
+}
 
 /**
  * 1. 노란색을 기준으로 빨간색이 주위를 감싼다.
