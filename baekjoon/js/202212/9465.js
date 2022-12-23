@@ -27,7 +27,6 @@
  *
  */
 // 20 40
-console.log( 10 + 40  + 50 + 100 + 80)
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 let [inputCase, ...inputs] = fs
@@ -46,8 +45,7 @@ for(let i = 0 ; i <inputs.length; i+=3){
         ]) + "\n";
 }
 
-console.log(+"111" + 2);
-
+console.log(answer);
 
 /**
  *
@@ -56,19 +54,21 @@ console.log(+"111" + 2);
  * @return string
  */
 function solution(size,arr){
-    const cache = new Array(size+1).fill(0);
+    const cache = new Array(2).fill(0).map(_ => new Array(size+1).fill(0));
 
-    cache[0] = Math.max(arr[0][0], arr[0][1]);
-    cache[1] = Math.max(arr[1][0] + arr[0][1], arr[1][1] + arr[0][0])
+    cache[0][0] = 0;
+    cache[1][0] = 0;
 
-    cache[2] = cache[0] + Math.max(arr[0][2] + arr[1][2] , arr[1][1] + arr[0][2]);
-    for(let i = 2; i < size;i++){
-        const temp = cache[i-2] +Math.max(arr[0][i] + arr[1][i-1], arr[0][i]+ arr[1][i-1]);
-        const temp1 = cache[i-1] + Math.max(arr[0][i] , arr[1][i]);
-        cache[i] = Math.max(temp,temp1);
+    cache[0][1] = arr[0][0];
+    cache[1][1] = arr[1][0];
+
+
+    for(let i = 2; i <=size+1;i++){
+        const temp = Math.max(cache[0][i-2], cache[1][i-2])
+        cache[0][i] = Math.max(cache[1][i-1] + arr[0][i-1] , temp + arr[0][i-1]);
+        cache[1][i] = Math.max(cache[0][i-1] + arr[1][i-1]  , temp + arr[1][i-1]);
     }
-    console.table(cache);
-    return cache[size-1]
+    return Math.max(cache[0][size],cache[1][size]).toString();
 }
 
 // 123
