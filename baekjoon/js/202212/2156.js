@@ -1,4 +1,4 @@
-const data = `6
+let data = `6
 6
 10
 13
@@ -6,10 +6,14 @@ const data = `6
 8
 1`;
 
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 
+data = fs.readFileSync(filePath)
+    .toString()
+    .trim()
 const [inputNumber, ...inputs] = data.split("\n").map(Number);
 
-console.log(inputNumber, inputs);
 console.log(solution(inputNumber,inputs));
 
 /**
