@@ -111,8 +111,8 @@ console.log(solution(Number(inputCase), inputs));
  * @param {number[]}inputs
  */
 function solution(inputCase, inputs){
-    const cache1 = new Array(inputCase).fill(1);
-    const cache2 = new Array(inputCase).fill(1);
+    const cache1 = new Array(inputCase).fill(0);
+    const cache2 = new Array(inputCase).fill(0);
 
     for(let i = 0; i < inputCase; i++){
         let increaseCount = 1;
@@ -127,7 +127,7 @@ function solution(inputCase, inputs){
     for(let i = inputCase -1; i >= 0 ; i--){
         let decreaseCount = 1;
 
-        for(let j = 0; j < i ; j++){
+        for(let j = i; j < inputCase ; j++){
             if(inputs[i] > inputs[j]){
                 decreaseCount = Math.max(decreaseCount, cache2[j] + 1);
             }
@@ -137,6 +137,6 @@ function solution(inputCase, inputs){
     }
 
     return Math.max(...new Array(inputCase).fill(0)
-        .map((_,index)=> cache1[index] + cache2[index]))
+        .map((_,index)=> cache1[index] + cache2[index])) -1
 
 }
