@@ -6,27 +6,16 @@ const input= Number(fs
 
 
 function solution(input) {
-    if(input %2 !== 0) return 0;
-    let answer = 0;
-    const cases = [0,2]
-    const p = [];
-    const dfs = (num) =>{
-        const sum = p.reduce((pre,cal) => pre+cal,0);
-        if(sum > input){
-            return ;
+    const cache = new Array(input+1).fill(0);
+
+    cache[0] = 1;
+    cache[2] = 3;
+    for(let i = 4;i<=input;i++){
+        cache[i] = cache[i-2] * 3;
+        for(let j=4; j<=i ; j+=2){
+            cache[i] += cache[ i - j] * 2;
         }
-        if(sum === input){
-            console.log(p);
-            answer += p.reduce((pre,cal) => (cal===2 ? 3 : 2) * pre ,1)
-            return ;
-        }
-        cases.forEach(n =>{
-            p.push(num+n);
-            dfs(num+n);
-            p.pop();
-        })
     }
-    dfs(2 );
-    return answer;
+    return cache[input];
 }
 console.log(solution(input));
