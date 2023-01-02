@@ -15,8 +15,8 @@ function main() {
   console.timeEnd("선택정렬");
 
   const otherArray =  new Array(1000).fill(0).map(_=>createRandomNumber());
-  console.time("정렬 라이브러리 성능")
+  console.time("기타1 라이브러리 성능")
   otherArray.sort();
-  console.timeEnd("정렬 라이브러리 성능")
+  console.timeEnd("기타1 라이브러리 성능")
 }
 main();
