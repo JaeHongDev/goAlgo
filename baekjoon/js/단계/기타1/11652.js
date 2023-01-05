@@ -1,33 +1,32 @@
-let data = `5
-1
-2
-1
-2
-1`;
+
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 [_,...data] = fs
     .readFileSync(filePath)
-    .toString().trim().split("\n");
+    .toString().trim().split("\n").map(Number);
 
-const hash = new Map();
+const map = new Map();
 
-data.forEach((item)=> hash.set(item, hash.has(item) ? hash.get(item) + BigInt(1) : BigInt(1)));
+for(let i = 0 ; i< data.length;i++){
+    map.set(data[i], map.has(data[i]) ? map.get(data[i])+1n : 1n);
+}
+console.log(map);
+const result = [...map.entries()].sort((a,b)=> {
+    if(b[1] > a[1]) return  1;
+    if(b[1] < a[1]) return -1;
+    return 0;
+});
 
+let answer = result[0][0]
+let nowNumber = result[0][1]
 
-
-let t = [...hash.entries()]
-t = t.sort((a,b) => b[1] > a[1] ? -1 : b[1] < a[1] ? 1 : 0);
-
-let min = t[0][0];
-
-for(let i =1 ; i < t.length; i++){
-    if(t[0][1] !== t[i][1]) {
+for(let i = 1 ; i < result.length;i++){
+    if(nowNumber !== result[i][1]){
         break;
     }
-
-    min = Math.min(min, t[i][0])
+    answer = Math.min(answer,result[i][0]);
 }
 
-console.log(min);
+console.log(String(answer));
+
 
