@@ -6,16 +6,16 @@
 - [x] https://www.acmicpc.net/problem/10825
 - [x] https://www.acmicpc.net/problem/10989
 - [ ] https://www.acmicpc.net/problem/11652
-- [ ] https://www.acmicpc.net/problem/11004
-- [ ] https://www.acmicpc.net/problem/10828
-- [ ] https://www.acmicpc.net/problem/9012
-- [ ] https://www.acmicpc.net/problem/10799
-- [ ] https://www.acmicpc.net/problem/10845
-- [ ] https://www.acmicpc.net/problem/10866
-- [ ] https://www.acmicpc.net/problem/10808
-- [ ] https://www.acmicpc.net/problem/10809
-- [ ] https://www.acmicpc.net/problem/10820
-- [ ] https://www.acmicpc.net/problem/2743
+- [x] https://www.acmicpc.net/problem/11004
+- [x] https://www.acmicpc.net/problem/10828
+- [x] https://www.acmicpc.net/problem/9012
+- [x] https://www.acmicpc.net/problem/10799
+- [x] https://www.acmicpc.net/problem/10845
+- [x] https://www.acmicpc.net/problem/10866
+- [x] https://www.acmicpc.net/problem/10808
+- [x] https://www.acmicpc.net/problem/10809
+- [x] https://www.acmicpc.net/problem/10820
+- [x] https://www.acmicpc.net/problem/2743
 - [ ] https://www.acmicpc.net/problem/11655
 - [ ] https://www.acmicpc.net/problem/10824
 - [ ] https://www.acmicpc.net/problem/11656
